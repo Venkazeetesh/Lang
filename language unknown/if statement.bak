@@ -1,0 +1,12 @@
+#lang racket
+(require(for-syntax syntax/parse))
+(define-syntax (Do you want print a)
+  (syntax-parse a
+    ((Do you want print arg:expr ...)
+     #'(begin
+     (define a 3) 
+     (if(> a 0)
+        0
+        1)
+     -1))))
+  

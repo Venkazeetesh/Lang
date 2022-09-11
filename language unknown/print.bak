@@ -1,0 +1,19 @@
+#lang racket
+;creating a print function
+(require (for-syntax syntax/parse))
+(require 
+(define-syntax (prt a)
+  (syntax-parse a
+    ((prt arg:expr)
+     #'(display arg))))
+;creating a print function with n number of argumunts returning
+(define-syntax (print form)
+  (syntax-parse form
+    ((print arg:expr ...)
+     #'(begin
+        (display arg) ...))))
+#|;creating a print function which return higgest value of number
+(define-syntax (max a)
+  (syntax-parse a
+    ((max arg:expr ...)
+     #'(display arg ...))))|#
